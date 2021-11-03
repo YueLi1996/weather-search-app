@@ -1,0 +1,71 @@
+.searchboard {
+  width: 800px;
+  height: 400px;
+  background-color: lightgray;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#street {
+  width: 600px;
+}
+
+#city {
+  width: 600px;
+}
+
+#state {
+  float: left;
+  width: 300px;
+}
+
+#auto-detect-mark {
+  margin-top: 5px;
+  margin-left: 20px;
+  float: left;
+}
+
+.checkbox {
+  margin-top: 5px;
+  margin-right: 200px;
+  float: right;
+}
+
+#searchbtn {
+  margin-top: 40px;
+  margin-left: -150px;
+  float: left;
+}
+
+#clearbtn {
+  margin-top: 30px;
+  margin-left: 150px;
+  float: left;
+}
+
+#btnform {
+  text-align: center;
+  margin: auto;
+}
+
+#resultbtn {
+  float: left;
+  margin-left: 45%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#favoritesbtn {
+  float: right;
+  margin-right: 42%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#progressbar {
+  text-align: center;
+  margin: auto;
+  margin-top: 120px;
+  width: 800px;
+}
