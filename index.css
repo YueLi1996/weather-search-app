@@ -1,10 +1,21 @@
 .searchboard {
   width: 800px;
   height: 400px;
-  background-color: lightgray;
+  background-color: rgba(218, 213, 213, 0.719);
   text-align: center;
   margin: auto;
   margin-top: 50px;
+}
+
+#block1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#titleimg {
+  height: 50px;
+  width: 50px;
 }
 
 #street {
@@ -18,6 +29,7 @@
 #state {
   float: left;
   width: 300px;
+  margin-bottom: 20px;
 }
 
 #auto-detect-mark {
