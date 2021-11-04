@@ -62,18 +62,27 @@
 #btnform {
   text-align: center;
   margin: auto;
+  /* height: 80px; */
+  height: inherit;
+}
+.resultcontain
+{
+  margin: auto;
 }
 
 #resultbtn {
   float: left;
-  margin-left: 850px;
+  margin-left: 45%;
+  margin-right: 10px;
   margin-top: 30px;
   margin-bottom: 30px;
+  padding-left: 5px;
 }
 
 #favoritesbtn {
-  float: right;
-  margin-right: 550px;
+
+  float: left;
+  /* margin-right: 550px; */
   margin-top: 30px;
   margin-bottom: 30px;
 }
