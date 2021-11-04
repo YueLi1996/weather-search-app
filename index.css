@@ -5,6 +5,8 @@
   text-align: center;
   margin: auto;
   margin-top: 50px;
+  border-radius: 2%;
+  border: gray;
 }
 
 #block1 {
