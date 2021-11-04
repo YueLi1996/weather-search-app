@@ -4,10 +4,32 @@ var stateDOM = document.getElementById("state")
 var searchbtnDOM = document.getElementById("searchbtn")
 
 // Enable submit button when info is filled
-if (streetDOM.value != "" || cityDOM.value !== "" || stateDOM.value != "default") {
-    console.log("????") 
-    searchbtnDOM.disabled = ""
-}
+streetDOM.addEventListener('change', () => {
+    if (streetDOM.value === "" || cityDOM.value === "" || stateDOM.value === "default") {
+        searchbtnDOM.disabled = true
+    }
+    else {
+        searchbtnDOM.disabled = false
+    }
+})
+
+cityDOM.addEventListener('change', () => {
+    if (streetDOM.value === "" || cityDOM.value === "" || stateDOM.value === "default") {
+        searchbtnDOM.disabled = true
+    }
+    else {
+        searchbtnDOM.disabled = false
+    }
+})
+
+stateDOM.addEventListener('change', () => {
+    if (streetDOM.value === "" || cityDOM.value === "" || stateDOM.value === "default") {
+        searchbtnDOM.disabled = true
+    }
+    else {
+        searchbtnDOM.disabled = false
+    }
+})
 
 // handle checkbox of current location
 var checkbox = document.querySelectorAll('input[type="checkbox"]')[0];
@@ -36,3 +58,5 @@ clearButton.addEventListener("click", () => {
     cityDOM.value = ""
     stateDOM.value = "default"
 })
+
+

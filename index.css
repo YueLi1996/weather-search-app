@@ -1,7 +1,7 @@
 .searchboard {
   width: 800px;
   height: 400px;
-  background-color: rgba(218, 213, 213, 0.719);
+  background-color: rgba(244, 244, 244, 0.719);
   text-align: center;
   margin: auto;
   margin-top: 50px;
@@ -85,7 +85,6 @@
   width: 800px;
 }
 
-.submit-part
-{
+.submit-part {
   height: inherit;
 }
