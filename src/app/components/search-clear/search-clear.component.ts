@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ClearService } from '../../services/clear.service';
+
+
 
 @Component({
   selector: 'app-search-clear',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchClearComponent implements OnInit {
 
-  constructor() { }
+  constructor(public clearObj:ClearService) {
+    // let obj = this.clearObj.clear()
+  }
 
   ngOnInit(): void {
   }
-
+  
+  // public doClear() {
+  //   obj
+  // }
 }

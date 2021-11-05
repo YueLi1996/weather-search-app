@@ -11,5 +11,8 @@ export class SelectStateComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+  inputState = "Select your state"
 
+  statedisable:any = "false"
 }

@@ -11,5 +11,18 @@ export class AutoDetectComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  autoClick:any = false
+  onClickFucntion()
+  {
+    if (this.autoClick == false)
+    {
+      console.log("this is false");
+      this.autoClick = true;
+    }
+    else
+    {
+      this.autoClick = false;
+    }
+  }
 }

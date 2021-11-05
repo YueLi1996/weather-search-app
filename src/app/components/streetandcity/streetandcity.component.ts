@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClearService } from '../../services/clear.service';
+
 
 @Component({
   selector: 'app-streetandcity',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StreetandcityComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  
+  constructor(public clearObj:ClearService) { 
+    
   }
 
+  ngOnInit(){
+
+  }
+
+  inputStreet:any = ""
+  inputCity:any = ""
+  citydisable:any = "false"
+  streetdisable:any = "false"
+  
 }

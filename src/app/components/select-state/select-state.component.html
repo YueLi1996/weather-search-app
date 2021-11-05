@@ -1,8 +1,8 @@
 <div class="form-group row states">
   <label for="state" class="col-sm-2 control-label font-style">State<span style="color: red;">&#42;</span></label>
   <div class="col-sm-10 input-boxes">
-    <select class="form-select" aria-label="Default select example" id="state">
-      <option value="default" selected>Select your state</option>
+    <select class="form-select" aria-label="Default select example" id="state" [(ngModel)]="inputState">
+      <option value="Select your state">Select your state</option>
       <option value="Alabama">Alabama</option>
       <option value="Alaska">Alaska</option>
       <option value="Arizona">Arizona</option>
