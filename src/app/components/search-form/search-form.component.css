@@ -11,16 +11,30 @@
 }
 
 #block1 {
+  position: relative;
+  top: 10px;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
+#block1 h3
+{
+  margin-top: 8px;
+}
+
 #titleimg {
   height: 50px;
+  margin-left: 8px;
   width: 50px;
 }
 
 .submit-part {
   height: inherit;
+}
+
+.states
+{
+  position: relative;
+  left: 90px;
 }

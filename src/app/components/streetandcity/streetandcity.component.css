@@ -1,7 +1,26 @@
 #street {
-  width: 600px;
+  height: 28px;
+  width: 455px;
 }
 
 #city {
-  width: 600px;
+  height: 28px;
+  width: 455px;
+}
+
+.streets
+{
+  position: relative;
+  left: 90px;
+}
+
+.cities
+{
+  position: relative;
+  left: 90px;
+}
+
+.font-type
+{
+  font-family: sans-serif;
 }

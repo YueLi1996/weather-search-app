@@ -1,5 +1,17 @@
 #state {
   float: left;
-  width: 300px;
+  height: 28px;
+  width: 255px;
   margin-bottom: 20px;
+}
+
+.states
+{
+  position: relative;
+  left: 90px;
+}
+
+.font-style
+{
+  font-family: sans-serif;
 }
