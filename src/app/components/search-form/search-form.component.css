@@ -1,0 +1,26 @@
+.searchboard {
+  width: 1000px;
+  height: 400px;
+  background-color: rgba(244, 244, 244, 0.719);
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 2%;
+  border: gray;
+  border-width: 5px;
+}
+
+#block1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#titleimg {
+  height: 50px;
+  width: 50px;
+}
+
+.submit-part {
+  height: inherit;
+}

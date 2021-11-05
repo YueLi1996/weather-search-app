@@ -1,0 +1,12 @@
+#auto-detect-mark {
+  height: inherit;
+  margin-top: 5px;
+  margin-left: 20px;
+  float: left;
+}
+
+.checkbox {
+  margin-top: 5px;
+  margin-right: 200px;
+  float: right;
+}
