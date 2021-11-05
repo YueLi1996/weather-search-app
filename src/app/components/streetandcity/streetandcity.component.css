@@ -24,3 +24,9 @@
 {
   font-family: sans-serif;
 }
+
+.input-boxes
+{
+  position: relative;
+  left: 55px;
+}

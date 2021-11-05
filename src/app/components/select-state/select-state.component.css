@@ -13,5 +13,11 @@
 
 .font-style
 {
-  font-family: sans-serif;
+  font-family: sans-serif !important;
+}
+
+.input-boxes
+{
+  position: relative;
+  left: 55px;
 }
