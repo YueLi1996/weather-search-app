@@ -17,7 +17,5 @@ export class SearchClearComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  // public doClear() {
-  //   obj
-  // }
+  searchbtnDOM:any = true;
 }

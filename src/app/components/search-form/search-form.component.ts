@@ -28,13 +28,16 @@ export class SearchFormComponent implements OnInit {
     let stateDOM = this.select_city.inputState;
     if(checkbox == true)
     {
+      console.log(this.select_city.statedisable);
+      
       if(streetDOM != "" || cityDOM != "") {
-        streetDOM = ""
-        cityDOM = ""
+        this.street_and_city.inputStreet = ""
+        this.street_and_city.inputCity = ""
     }
         this.street_and_city.citydisable = "true"
         this.street_and_city.streetdisable = "true"
-        stateDOM = "default"
+        this.select_city.statedisable = "true"
+        this.select_city.inputState = "Select your state"
         // stateDOM.disabled = "true"
     }
     else {
@@ -42,9 +45,11 @@ export class SearchFormComponent implements OnInit {
       cityDOM = ""
       this.street_and_city.citydisable = "false"
       this.street_and_city.streetdisable = "false"
+      this.select_city.statedisable = "false"
       // stateDOM.disabled = ""
     }
-
+    //handle submit button
+    this.CheckTosubmit()
     // handle clear button
     // var clearButton = document.getElementById('clearbtn')
     // clearButton.addEventListener("click", () => {
@@ -53,5 +58,21 @@ export class SearchFormComponent implements OnInit {
     //     stateDOM.value = "default"
     // })
   }
-  
+
+  public CheckTosubmit()
+  {
+    let streetDOM = this.street_and_city.inputStreet;
+    let cityDOM = this.street_and_city.inputCity;
+    let stateDOM = this.select_city.inputState;
+    let searchbtnDOM = this.clear.searchbtnDOM
+    //handle submit button
+    if (streetDOM == "" || cityDOM == "" || stateDOM == "Select your state") {
+      this.clear.searchbtnDOM = true
+    }
+    else {
+      console.log("searchbtnDOM:", searchbtnDOM);
+      this.clear.searchbtnDOM = false
+    }
+    
+  }
 }

@@ -1,7 +1,7 @@
 <div class="form-group row states">
   <label for="state" class="col-sm-2 control-label font-style">State<span style="color: red;">&#42;</span></label>
   <div class="col-sm-10 input-boxes">
-    <select class="form-select" aria-label="Default select example" id="state" [(ngModel)]="inputState">
+    <select class="form-select" aria-label="Default select example" id="state" [(ngModel)]="inputState" [disabled]="statedisable">
       <option value="Select your state">Select your state</option>
       <option value="Alabama">Alabama</option>
       <option value="Alaska">Alaska</option>

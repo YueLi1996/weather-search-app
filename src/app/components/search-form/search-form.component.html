@@ -4,13 +4,13 @@
     <img src="assets\Images\title_img.png" alt="" id="titleimg">
   </div>
   <form>
-    <app-streetandcity #street_and_city (keyup)="handleInput()"></app-streetandcity>
-    <app-select-state #select_state (click)="handleInput()"></app-select-state>
+    <app-streetandcity #street_and_city (change)="CheckTosubmit()"></app-streetandcity>
+    <app-select-state #select_state (change)="CheckTosubmit()"></app-select-state>
     <hr style="width:730px;">
   </form>
   <div class="submit-part">
     <app-auto-detect #auto_detect (click)="handleInput()"></app-auto-detect>
-    <app-search-clear #clear (click)="handleInput()"></app-search-clear>
+    <app-search-clear #clear (change)="CheckTosubmit()"></app-search-clear>
   </div>
 </div>
 
