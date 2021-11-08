@@ -32,3 +32,231 @@
 .submit-part {
   height: inherit;
 }
+
+
+#street {
+  height: 28px;
+  width: 455px;
+}
+
+#city {
+  height: 28px;
+  width: 455px;
+}
+
+.streets
+{
+  position: relative;
+  left: 90px;
+}
+
+.cities
+{
+  position: relative;
+  left: 90px;
+}
+
+.font-type
+{
+  font-family: sans-serif;
+}
+
+.input-boxes
+{
+  position: relative;
+  left: 55px;
+}
+
+#auto-detect-mark {
+  height: inherit;
+  margin-top: 5px;
+  margin-left: 20px;
+  float: left;
+}
+
+.checkbox {
+  position: relative;
+  top: 5px;
+  right: 450px;
+  float: right;
+}
+
+.detect-auto
+{
+  position: relative;
+  left: 100px;
+}
+
+.font-style
+{
+  font-family: sans-serif;
+}
+
+#searchbtn {
+  margin-top: 42px;
+  margin-left: -70px;
+  float: left;
+}
+
+#clearbtn {
+  margin-top: 41px;
+  margin-left: 8px;
+  float: left;
+}
+
+.left-put
+{
+  position: relative;
+  left: 35px;
+}
+
+.details-table {
+  width: 1150px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.top-label {
+  background-color: rgb(79, 110, 172);
+  padding: 0px;
+  height: 50px;
+}
+
+.info_label {
+  float: left;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 22px;
+  padding-left: 120px;
+  margin-left: 10px;
+  margin-top: 13px;
+  font-weight: 30px;
+}
+
+#date {
+  margin-right: 30px;
+}
+#status01 {
+  margin-right: 30px;
+}
+
+.detail-container {
+  height: 80px;
+  width: 1150px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.detail-info {
+  float: left;
+  /* background-color: white; */
+}
+
+.dates {
+  float: left;
+  font-size: 18px;
+  height: 50px;
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.status-info {
+  float: left;
+  width: 200px;
+  height: 80px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.status-info p {
+  float: left;
+  position: relative;
+  top: 9px;
+  left: 8px;
+}
+
+.high-temp {
+  float: left;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.low-temp {
+  float: left;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+  position: relative;
+  left: 20px;
+}
+
+.wind-speed {
+  float: left;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+  position: relative;
+  left: 50px;
+}
+
+#weatherTab
+{
+  margin: auto;
+  margin-top: 30px;
+  width: 1000px;
+}
+
+#myTable
+{
+  margin:auto;
+  margin-top: 10px;
+  width:1000px;
+}
+/* .img_style
+{
+  width: 10px;
+} */
+
+#btnform {
+  text-align: center;
+  margin: auto;
+  height: inherit;
+  width: 1000px;
+  margin-top: 20px;
+}
+
+.position-set
+{
+  position: relative;
+  left: 5%;
+}
+
+
+#resultbtn
+{
+  width: 85px;
+}
+
+#favoritesbtn
+{
+  margin-left: 30px;
+  border: 0;
+
+}
+
+#progressbar {
+  text-align: center;
+  margin: auto;
+  margin-top: 45px;
+  width: 1000px;
+  display: none;
+}

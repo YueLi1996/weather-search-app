@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
@@ -25,7 +26,8 @@ import { ClearService } from './services/clear.service';
     ProgressBarComponent
   ],
   imports: [
-    BrowserModule,FormsModule
+    BrowserModule,FormsModule,
+    HttpClientModule
   ],
   providers: [ClearService],
   bootstrap: [AppComponent]

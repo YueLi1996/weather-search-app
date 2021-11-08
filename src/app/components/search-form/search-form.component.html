@@ -4,13 +4,124 @@
     <img src="assets\Images\title_img.png" alt="" id="titleimg">
   </div>
   <form>
-    <app-streetandcity #street_and_city (change)="CheckTosubmit()"></app-streetandcity>
+    <div class="form-group row streets" (change)="CheckTosubmit()">
+      <label for="street" class="col-sm-2 control-label font-type">Steet<span style="color: red;">&#42;</span></label>
+      <div class="col-sm-10 input-boxes">
+        <input type="text" class="form-control" id="street" [(ngModel)]="inputStreet" [disabled]="streetdisable" name="streetsValue">
+      </div>
+    </div>
+    
+    <div class="form-group row cities" (change)="CheckTosubmit()">
+      <label for="city" class="col-sm-2 control-label font-type">City<span style="color: red;">&#42;</span></label>
+        <div class="col-sm-10 input-boxes">
+            <input type="text" class="form-control" id="city" [(ngModel)]="inputCity"  [disabled]="citydisable" name="cityValue">
+        </div>
+    </div>
     <app-select-state #select_state (change)="CheckTosubmit()"></app-select-state>
     <hr style="width:730px;">
   </form>
-  <div class="submit-part">
-    <app-auto-detect #auto_detect (click)="handleInput()"></app-auto-detect>
-    <app-search-clear #clear (change)="CheckTosubmit()"></app-search-clear>
+  <div class="submit-part" (click)="handleInput()">
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10 detect-auto" style="font-family: sans-serif !important;">
+        <span id="auto-detect-mark" >Auto-detect location<span style="color: red;">&#42;</span></span>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="autoClick" (click)="onClickFucntion()"> Current Location
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="form-group left-put">
+  
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary" type="submit" id="searchbtn" [disabled]="searchbtnDOM" (click)="getData()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+            viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg>
+          Search</button>
+      </div>
+    
+      <div>
+        <button type="button" class="btn btn-outline-secondary" id="clearbtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-nested"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z" />
+          </svg>
+          Clear</button>
+      </div>
+      
+    </div>
   </div>
 </div>
 
+<div id="topTag" style="display: none;">
+<ul class="nav nav-tabs justify-content-end" id="weatherTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Day View</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Daily Temp. Chart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Meteogram</a>
+  </li>
+</ul>
+</div>
+
+<div class="tab-content" id="myTabContent" style="display: none;">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" >
+    <table class="table" id="myTable">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Temp.High(&deg)</th>
+          <th scope="col">Temp.Low(&deg)</th>
+          <th scope="col">Wind Speed(mph)</th>
+        </tr>
+      </thead>
+      <tbody id="myTableBody">
+        <!-- <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+
+
+<div class="form-group" id="btnform">
+  <div class="col-sm-offset-2 col-sm-10 position-set">
+    <button class="btn btn-primary" type="submit" id="resultbtn">Result</button>
+    <button type="button" class="btn btn-outline-primary" id="favoritesbtn">Favorites</button>
+  </div>
+</div>
+
+<div class="progress" id="progressbar">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+    aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+  </div>
+</div>
