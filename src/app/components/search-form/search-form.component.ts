@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as Highcharts from 'highcharts';
 
 
 @Component({
@@ -78,11 +79,12 @@ export class SearchFormComponent implements OnInit {
       this.searchbtnDOM = true
     }
     else {
-      console.log("searchbtnDOM:", searchbtnDOM);
+      //console.log("searchbtnDOM:", searchbtnDOM);
       this.searchbtnDOM = false
     }
-    
+   
   }
+  
   onClickFucntion()
   {
     if (this.autoClick == false)
@@ -93,6 +95,21 @@ export class SearchFormComponent implements OnInit {
     else
     {
       this.autoClick = false;
+    }
+  }
+
+  images = [
+    {url: 'assets/Images/unfav_btn.png'},
+    {url: 'assets/Images/fav_btn.png'}
+  ];
+
+  img = this.images[0];
+
+  changeImg(): void {
+    if (this.img.url === this.images[0].url) {
+      this.img = this.images[1];
+    } else {
+      this.img = this.images[0];
     }
   }
 
@@ -438,41 +455,142 @@ export class SearchFormComponent implements OnInit {
                return false;
      }
 
+    //  public first_chart(data:any)
+    //  {
+    //    var monthes = new Array(12);
+    //    monthes[0] = "Jan";
+    //    monthes[1] = "Feb";
+    //    monthes[2] = "Mar";
+    //    monthes[3] = "Apr";
+    //    monthes[4] = "May";
+    //    monthes[5] = "Jun";
+    //    monthes[6] = "Jul";
+    //    monthes[7] = "Aug";
+    //    monthes[8] = "Sep";
+    //    monthes[9] = "Oct";
+    //    monthes[10] = "Nov";
+    //    monthes[11] = "Dec";
+    //    var leng = data.intervals.length;
+    //    var satrt_m = new Date(data.startTime).getMonth();
+    //    var satrt_d = new Date(data.startTime).getDate();
+    //    var satrt_y = new Date(data.startTime).getFullYear();
+    //    var end_m = new Date(data.endTime).getMonth();
+    //    var end_d = new Date(data.endTime).getDate();
+    //    var end_y = new Date(data.endTime).getFullYear();
+    //    var ranges =  "Range: " + satrt_d + " " + monthes[satrt_m] + " to " + end_d + " " + monthes[end_m];
+    //    console.log(ranges);
+    //    var arr = new Array(Number(leng));
+    //    for (var i =0;i < leng;i++)
+    //    {
+    //      arr[i] = new Array(3);
+    //      arr[i][0] = new Date(data.intervals[i].startTime).getTime();
+    //      arr[i][1] = data.intervals[i].values.temperatureMin;
+    //      arr[i][2] = data.intervals[i].values.temperatureMax;
+    //    }
+    //    console.log(arr);
+ 
+    //    // Highcharts.getJSON(
+    //    // JSON.stringify( arr ),
+    //    // function (data) {
+    //      Highcharts.chart('container', {
+ 
+    //          chart: {
+    //              type: 'arearange',
+    //              zoomType: 'x',
+    //              scrollablePlotArea: {
+    //                  minWidth: 600,
+    //                  scrollPositionX: 1
+    //              }
+    //          },
+    //          plotOptions: {
+    //              series: {
+    //                  fillColor: {
+    //                      linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+    //                      stops: [
+    //                          [0, 'rgb(247, 171, 52)'],
+    //                          [1, 'rgb(221, 235, 248)']
+    //                      ]
+    //                  }
+    //              }
+    //          },
+    //          title: {
+    //              text: 'Temperature Ranges (Min, Max)'
+    //          },
+ 
+    //          xAxis: {
+    //              type: 'datetime',
+    //              accessibility: {
+    //                  rangeDescription: ranges
+    //              }
+    //          },
+ 
+    //          yAxis: {
+    //              title: {
+    //                  text: null
+    //              }
+    //          },
+ 
+    //          tooltip: {
+    //              crosshairs: true,
+    //              shared: true,
+    //              valueSuffix: '°F',
+    //              xDateFormat: '%A, %b %e'
+    //          },
+ 
+    //          legend: {
+    //              enabled: false
+    //          },
+ 
+    //          series: [{
+    //              name: 'Temperatures',
+    //              data: arr
+    //          }]
+ 
+    //      });
+    //   //  weather_hours(data)
+ 
+    //  }
+
+  
   getData()
   {
     var processing:any = document.getElementById("progressbar");
-    var pronum:any = 0;
+    //console.log("haha")
+    //console.log(processing)
     processing.style.display = "block";
+    //console.log(processing.style.display)
     var pbar:any = document.getElementById("probar");
     pbar.style.display = "block";
     pbar.style.height = "100px";
-    // setInterval(function(){
-    //   console.log(pronum);
-      
-    //   pronum += 25;
-    //   var temp:any = pronum + "%";
-    //   processing.style.width = temp
-    //   processing.setAttribute('aria-valuenow', pronum)
-    // }, 500);
     let api = 'https://maps.googleapis.com/maps/api/geocode/json?address=Los&key=AIzaSyCiknUSvpLnLnwp8JoWDaY8GWWIfUWhx60';
     this.http.get(api).subscribe((response:any) => {
       // console.log(response.status);
-      console.log(response.results[0]["geometry"]["location"]);
+      //console.log(response.results[0]["geometry"]["location"]);
       var lat:any = response.results[0]["geometry"]["location"]["lat"];
       var lng:any = response.results[0]["geometry"]["location"]["lng"];
       var field:any = "fields=precipitationIntensity,precipitationType,windSpeed,windGust,windDirection,temperatureMax,temperatureMin,temperatureApparent,cloudCover,cloudBase,cloudCeiling,weatherCode,temperature,humidity,pressureSurfaceLevel,visibility,cloudCover,uvIndex,precipitationProbability"
       let weatherApi:any = "http://localhost:3000/whetherInfo?" + "location_lat=" + lat + "&" + "location_lng=" + lng + "&" + field;
-      console.log(weatherApi);
+
+      var dynmatic_title:any = document.getElementById("dynmatic_title")
+      var streetDOM:any = document.getElementById("street")
+      var cityDOM:any = document.getElementById("city")
+      var stateDOM:any = document.getElementById("state")
+      var forecast_title:any = document.createElement('h2')
+      var forecast_title_content:any = document.createTextNode("Forecast at " + streetDOM.value + ", " + cityDOM.value + ", " + stateDOM.value)
+      forecast_title.appendChild(forecast_title_content)
+      dynmatic_title.appendChild(forecast_title);
+
+      //console.log(weatherApi);
       this.http.get(weatherApi).subscribe((responses:any) => {      
-        console.log(responses.data.timelines[0].intervals);
+        //console.log(responses.data.timelines[0].intervals);
         var day_data:any = responses.data.timelines[0].intervals;
         var t:any = document.getElementById("topTag");
         t.style.display = "block";
         var t2:any = document.getElementById("myTabContent");
         t2.style.display = "block";
-        var fav:any = document.getElementById("btnform");
-        fav.style.display = "none";
-        // processing.style.display = "none";
+
+        processing.style.display = "none";
+        
         for (var i=0;i<14;i++){
           this.generate_details(day_data, i);
         }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AppComponent } from './app.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
@@ -12,7 +13,6 @@ import { SearchClearComponent } from './components/search-clear/search-clear.com
 import { ResultFavoriteComponent } from './components/result-favorite/result-favorite.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
-import { ClearService } from './services/clear.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,9 @@ import { ClearService } from './services/clear.service';
   ],
   imports: [
     BrowserModule,FormsModule,
-    HttpClientModule
+    HttpClientModule, HighchartsChartModule
   ],
-  providers: [ClearService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

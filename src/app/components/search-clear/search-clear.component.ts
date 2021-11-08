@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { ClearService } from '../../services/clear.service';
 
 
 
@@ -10,8 +9,7 @@ import { ClearService } from '../../services/clear.service';
 })
 export class SearchClearComponent implements OnInit {
 
-  constructor(public clearObj:ClearService) {
-    // let obj = this.clearObj.clear()
+  constructor() {
   }
 
   ngOnInit(): void {

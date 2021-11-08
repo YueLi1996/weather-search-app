@@ -18,8 +18,7 @@
   margin-bottom: 20px;
 }
 
-#block1 h3
-{
+#block1 h3 {
   margin-top: 8px;
 }
 
@@ -33,7 +32,6 @@
   height: inherit;
 }
 
-
 #street {
   height: 28px;
   width: 455px;
@@ -44,25 +42,21 @@
   width: 455px;
 }
 
-.streets
-{
+.streets {
   position: relative;
   left: 90px;
 }
 
-.cities
-{
+.cities {
   position: relative;
   left: 90px;
 }
 
-.font-type
-{
+.font-type {
   font-family: sans-serif;
 }
 
-.input-boxes
-{
+.input-boxes {
   position: relative;
   left: 55px;
 }
@@ -81,14 +75,12 @@
   float: right;
 }
 
-.detect-auto
-{
+.detect-auto {
   position: relative;
   left: 100px;
 }
 
-.font-style
-{
+.font-style {
   font-family: sans-serif;
 }
 
@@ -104,8 +96,7 @@
   float: left;
 }
 
-.left-put
-{
+.left-put {
   position: relative;
   left: 35px;
 }
@@ -208,23 +199,17 @@
   left: 50px;
 }
 
-#weatherTab
-{
+#weatherTab {
   margin: auto;
   margin-top: 30px;
   width: 1000px;
 }
 
-#myTable
-{
-  margin:auto;
+#myTable {
+  margin: auto;
   margin-top: 10px;
-  width:1000px;
+  width: 1000px;
 }
-/* .img_style
-{
-  width: 10px;
-} */
 
 #btnform {
   text-align: center;
@@ -234,23 +219,18 @@
   margin-top: 20px;
 }
 
-.position-set
-{
+.position-set {
   position: relative;
   left: 5%;
 }
 
-
-#resultbtn
-{
+#resultbtn {
   width: 85px;
 }
 
-#favoritesbtn
-{
+#favoritesbtn {
   margin-left: 30px;
   border: 0;
-
 }
 
 #progressbar {
@@ -259,4 +239,19 @@
   margin-top: 45px;
   width: 1000px;
   display: none;
+}
+
+#dynmatic_title {
+  text-align: center;
+  margin: 100px auto;
+}
+
+#fav {
+  height: 50px;
+  width: 60px;
+}
+
+#top-right-tag {
+  float: right;
+  margin-right: 100px;
 }

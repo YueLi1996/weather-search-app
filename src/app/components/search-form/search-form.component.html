@@ -32,9 +32,7 @@
       </div>
     </div>
     
-    
     <div class="form-group left-put">
-  
       <div class="col-sm-offset-2 col-sm-10">
         <button class="btn btn-primary" type="submit" id="searchbtn" [disabled]="searchbtnDOM" (click)="getData()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -54,23 +52,42 @@
           </svg>
           Clear</button>
       </div>
-      
     </div>
   </div>
 </div>
 
+<div class="form-group" id="btnform">
+  <div class="col-sm-offset-2 col-sm-10 position-set">
+    <button class="btn btn-primary" type="submit" id="resultbtn">Result</button>
+    <button type="button" class="btn btn-outline-primary" id="favoritesbtn">Favorites</button>
+  </div>
+</div>
+
+<div class="progress" id="progressbar">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+    aria-valuemin="0" aria-valuemax="100" style="width: 40%" id="probar">
+  </div>
+</div>
+
+<div id="dynmatic_title"></div>
+
+<div id="top-right-tag">
+  <img id="fav" [src]="img.url" alt="" (click)="changeImg()">&nbsp; &nbsp; &nbsp;<span style="color: gray;">Details &#62;</span>
+</div>
+
+
 <div id="topTag" style="display: none;">
-<ul class="nav nav-tabs justify-content-end" id="weatherTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Day View</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Daily Temp. Chart</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Meteogram</a>
-  </li>
-</ul>
+  <ul class="nav nav-tabs justify-content-end" id="weatherTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Day View</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Daily Temp. Chart</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Meteogram</a>
+    </li>
+  </ul>
 </div>
 
 <div class="tab-content" id="myTabContent" style="display: none;">
@@ -86,42 +103,9 @@
           <th scope="col">Wind Speed(mph)</th>
         </tr>
       </thead>
-      <tbody id="myTableBody">
-        <!-- <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr> -->
-      </tbody>
+      <tbody id="myTableBody"></tbody>
     </table>
   </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" id="containerss"></div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-</div>
-
-
-<div class="form-group" id="btnform">
-  <div class="col-sm-offset-2 col-sm-10 position-set">
-    <button class="btn btn-primary" type="submit" id="resultbtn">Result</button>
-    <button type="button" class="btn btn-outline-primary" id="favoritesbtn">Favorites</button>
-  </div>
-</div>
-
-<div class="progress" id="progressbar">
-  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
-    aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-  </div>
 </div>
