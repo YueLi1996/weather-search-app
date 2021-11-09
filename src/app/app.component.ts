@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import ExportingModule from 'highcharts/modules/exporting';
+import SunsetTheme from 'highcharts/themes/sunset.js';
+import * as Highcharts from 'highcharts';
+declare function first_chart(more_data:any):null
 
 @Component({
   selector: 'app-root',
@@ -9,7 +13,14 @@ export class AppComponent{
   title(title: any) {
     throw new Error('Method not implemented.');
   }
-  
+  // title = 'charts';
+  // highcharts = Highcharts;
+  // chartOptions1: Highcharts.Options = {
+  //   series: [{
+  //     data: [1, 2, 3],
+  //     type: 'line'
+  //   }]
+  // };
 }
   // let obj:any = document.getElementsByClassName("checkbox")[0];
   // if(obj.checked == true)

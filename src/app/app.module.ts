@@ -23,7 +23,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     AutoDetectComponent,
     SearchClearComponent,
     ResultFavoriteComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
   ],
   imports: [
     BrowserModule,FormsModule,

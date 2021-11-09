@@ -75,7 +75,7 @@
   <img id="fav" [src]="img.url" alt="" (click)="changeImg()">&nbsp; &nbsp; &nbsp;<span style="color: gray;">Details &#62;</span>
 </div>
 
-
+<div id="allDetails">
 <div id="topTag" style="display: none;">
   <ul class="nav nav-tabs justify-content-end" id="weatherTab" role="tablist">
     <li class="nav-item">
@@ -92,7 +92,7 @@
 
 <div class="tab-content" id="myTabContent" style="display: none;">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" >
-    <table class="table" id="myTable">
+    <table class="table table-hover" id="myTable">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -106,6 +106,32 @@
       <tbody id="myTableBody"></tbody>
     </table>
   </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" id="containerss"></div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="text-align: center; width: 1000px;  margin: auto auto;">
+    <figure class="highcharts-figure" >
+      <div id="container"></div>
+    </figure>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="text-align: center; width: 1000px">
+    <div id="weather-hours"></div>
+  </div>
+</div>
+</div>
+
+<div id="oneDayDetail">
+<table class="table">
+  <tbody id="one">
+    <!-- <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+    </tr> -->
+  </tbody>
+</table>
 </div>

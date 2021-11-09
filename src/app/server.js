@@ -58,6 +58,24 @@ app.get('/whetherInfo',function(req, res){
 
 })
 
+app.get('/whetherInfo/hours',function(req, res){
+    res.setHeader("Content-Type","text/plain");
+    res.setHeader("Access-Control-Allow-Origin","*");
+    var params = url.parse(req.url, true).query;
+    
+    var options = {
+        method: 'GET',
+        url: 'https://api.tomorrow.io/v4/timelines?location='+ params.location_lat + ',' +
+        params.location_lng + '&fields=' + params.fields + '&timesteps=1h&units=imperial&timezone=America/Los_Angeles&apikey=Kinp9u7WdiYqjIegSaaPuHkUA0t3W1Te',
+    };
+    request(options, function (error, response, body) {
+        // console.log(options.url);
+        // console.log(body);
+        res.send(body);
+    });
+
+})
+
 var server = app.listen(port, function () {
     console.log("Example app listening at http://localhost:3000")
 })

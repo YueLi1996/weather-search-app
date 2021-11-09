@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as Highcharts from 'highcharts';
-
+declare function first_chart(more_data:any, lat:any, lng:any):null
 
 @Component({
   selector: 'app-search-form',
@@ -25,6 +25,17 @@ export class SearchFormComponent implements OnInit {
   streetdisable:any = "false"
   autoClick:any = false
   searchbtnDOM:any = true;
+  strInfo:any = ""
+  cityInfo:any = ""
+
+  // title = 'charts';
+  // highcharts = Highcharts;
+  // chartOptions1: Highcharts.Options = {
+  //   series: [{
+  //     data: [1, 2, 3],
+  //     type: 'line'
+  //   }]
+  // };
 
   public handleInput(){
     // console.log(this.street_and_city.inputStreet); // street
@@ -35,9 +46,11 @@ export class SearchFormComponent implements OnInit {
     let streetDOM = this.inputStreet;
     let cityDOM = this.inputCity;
     let stateDOM = this.select_city.inputState;
+    console.log(checkbox, "values checkbox");
+    
     if(checkbox == true)
     {
-      console.log(this.select_city.statedisable);
+      console.log(this.select_city.statedisable, "checkbox is true liangdu");
       
       if(streetDOM != "" || cityDOM != "") {
         this.inputStreet = ""
@@ -47,7 +60,18 @@ export class SearchFormComponent implements OnInit {
         this.streetdisable = "true"
         this.select_city.statedisable = "true"
         this.select_city.inputState = "Select your state"
+
+        this.http.get("https://ipinfo.io/?token=20ef1690f3db86").subscribe((response:any) => {
+          console.log(response);
+          this.strInfo = response.region;
+          this.cityInfo = response.city;
+        })
+
+        console.log("inner checkBox: ", this.cityInfo);
+        
         // stateDOM.disabled = "true"
+        // this.inputStreet = "Los Angeles"
+        // this.inputCity = "Los Angeles"
     }
     else {
       streetDOM = ""
@@ -55,6 +79,10 @@ export class SearchFormComponent implements OnInit {
       this.citydisable = "false"
       this.streetdisable = "false"
       this.select_city.statedisable = "false"
+      console.log("this is input street in onclick: ", this.inputStreet);
+      
+      this.strInfo = this.inputStreet
+      this.cityInfo = this.inputCity
       // stateDOM.disabled = ""
     }
     //handle submit button
@@ -74,12 +102,21 @@ export class SearchFormComponent implements OnInit {
     let cityDOM = this.inputCity;
     let stateDOM = this.select_city.inputState;
     let searchbtnDOM = this.searchbtnDOM
+    let checkbox = this.autoClick;
     //handle submit button
-    if (streetDOM == "" || cityDOM == "" || stateDOM == "Select your state") {
+    console.log("checkBox status: ", checkbox);
+    
+    if (checkbox == true)
+    {
+      this.searchbtnDOM = false
+    }
+    else if (streetDOM == "" || cityDOM == "" || stateDOM == "Select your state") {
       this.searchbtnDOM = true
     }
-    else {
+    else{
       //console.log("searchbtnDOM:", searchbtnDOM);
+      this.strInfo = this.inputStreet
+      this.cityInfo = this.inputCity
       this.searchbtnDOM = false
     }
    
@@ -87,9 +124,9 @@ export class SearchFormComponent implements OnInit {
   
   onClickFucntion()
   {
+    console.log("this is false");
     if (this.autoClick == false)
     {
-      console.log("this is false");
       this.autoClick = true;
     }
     else
@@ -306,6 +343,19 @@ export class SearchFormComponent implements OnInit {
   }
 
 
+  // public clickInfo(data:any)
+  // {
+  //   alert("hello")
+  //   // var tabs:any = document.getElementById("allDetails")
+  //   // tabs.style.display = "none";
+  //   // var one:any = document.getElementById("one");
+  //   // var status:any = document.createElement('tr');
+  //   // var status_text:any = document.createElement('th');
+  //   // var status_value:any = document.createElement('th');
+  //   // status_text.innerHTML = "Status";
+  //   // status_value.innerHTML = this.img_showing03(data.code);
+  // }
+
   public generate_details(data:any, index:any)
     {
       var time_details = new Date(data[index].startTime).getDay()
@@ -339,16 +389,11 @@ export class SearchFormComponent implements OnInit {
       else {
         date_detail = weekday[time_details] + ", " + td.getDate() + " " + monthes[td.getMonth()] + " " + td.getFullYear();
       }
-      // var temp_ele = document.createElement('div');
-      // temp_ele.setAttribute("class", "detail-container");
-      // temp_ele.setAttribute("onclick", function q(){console.log("index: ", index);})
-      // temp_ele.setAttribute("id", index);
-      // temp_ele.onclick = function()
-      // {
-      //   show_weather_details(data, index, date_detail);
-      // }
+
       var tableContent:any = document.getElementById("myTableBody");
       var overall:any = document.createElement('tr');
+      // overall.onclick = this.clickInfo(data[index]);
+      overall.style.cursor = "pointer";
       var nums:any = document.createElement('th');
       nums.setAttribute("scope", "row");
       nums.innerHTML = index + 1
@@ -397,54 +442,10 @@ export class SearchFormComponent implements OnInit {
 
       tableContent.appendChild(overall)
 
-
-
-      // var date_var = document.createElement('div');
-      // date_var.setAttribute("class", "detail-info dates");
-      // date_var.innerHTML = date_detail;
-      // temp_ele.appendChild(date_var)
-
-      // var imgs = document.createElement('div');
-      // imgs.setAttribute("class", "detail-info status-info");
-      // var code = data[index].values.weatherCode;
-      // // var ss = img_showing02(code)
-      // var src_image = document.createElement('img');
-      // // src_image.src = ss;
-      // var par = document.createElement('p');
-      // // par.innerHTML = img_showing03(code);
-      // imgs.appendChild(src_image)
-      // imgs.appendChild(par)
-      // temp_ele.appendChild(imgs)
-      // //high temp
-      // var high_temp = document.createElement('div');
-      // high_temp.setAttribute("class", "detail-info high-temp");
-      // var ht = data[index].values.temperatureMax;
-      // high_temp.innerHTML = ht;
-      // temp_ele.appendChild(high_temp);
-
-      // //low_temp
-      // var low_temp = document.createElement('div');
-      // low_temp.setAttribute("class", "detail-info low-temp");
-      // var lt = data[index].values.temperatureMin;
-      // low_temp.innerHTML = lt;
-      // temp_ele.appendChild(low_temp);
-
-      // //wind Speed
-      // var wind_s = document.createElement('div');
-      // wind_s.setAttribute("class", "detail-info wind-speed");
-      // var ws = data[index].values.windSpeed;
-      // wind_s.innerHTML = ws;
-      // temp_ele.appendChild(wind_s);
-
-      // table_container.appendChild(temp_ele);
-      // var body = document.getElementsByTagName("body")[0];
-      // body.appendChild(table_container);
-
-      // // temp_ele.style.cursor="hand";
-
-      // console.log(date_detail);
-
     }
+
+
+
     private preCTime: number = 0;    //ms
     public needDelay(delayTime: number = 0): boolean {
                let nowTime: number = Date.now();
@@ -455,101 +456,7 @@ export class SearchFormComponent implements OnInit {
                return false;
      }
 
-    //  public first_chart(data:any)
-    //  {
-    //    var monthes = new Array(12);
-    //    monthes[0] = "Jan";
-    //    monthes[1] = "Feb";
-    //    monthes[2] = "Mar";
-    //    monthes[3] = "Apr";
-    //    monthes[4] = "May";
-    //    monthes[5] = "Jun";
-    //    monthes[6] = "Jul";
-    //    monthes[7] = "Aug";
-    //    monthes[8] = "Sep";
-    //    monthes[9] = "Oct";
-    //    monthes[10] = "Nov";
-    //    monthes[11] = "Dec";
-    //    var leng = data.intervals.length;
-    //    var satrt_m = new Date(data.startTime).getMonth();
-    //    var satrt_d = new Date(data.startTime).getDate();
-    //    var satrt_y = new Date(data.startTime).getFullYear();
-    //    var end_m = new Date(data.endTime).getMonth();
-    //    var end_d = new Date(data.endTime).getDate();
-    //    var end_y = new Date(data.endTime).getFullYear();
-    //    var ranges =  "Range: " + satrt_d + " " + monthes[satrt_m] + " to " + end_d + " " + monthes[end_m];
-    //    console.log(ranges);
-    //    var arr = new Array(Number(leng));
-    //    for (var i =0;i < leng;i++)
-    //    {
-    //      arr[i] = new Array(3);
-    //      arr[i][0] = new Date(data.intervals[i].startTime).getTime();
-    //      arr[i][1] = data.intervals[i].values.temperatureMin;
-    //      arr[i][2] = data.intervals[i].values.temperatureMax;
-    //    }
-    //    console.log(arr);
  
-    //    // Highcharts.getJSON(
-    //    // JSON.stringify( arr ),
-    //    // function (data) {
-    //      Highcharts.chart('container', {
- 
-    //          chart: {
-    //              type: 'arearange',
-    //              zoomType: 'x',
-    //              scrollablePlotArea: {
-    //                  minWidth: 600,
-    //                  scrollPositionX: 1
-    //              }
-    //          },
-    //          plotOptions: {
-    //              series: {
-    //                  fillColor: {
-    //                      linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-    //                      stops: [
-    //                          [0, 'rgb(247, 171, 52)'],
-    //                          [1, 'rgb(221, 235, 248)']
-    //                      ]
-    //                  }
-    //              }
-    //          },
-    //          title: {
-    //              text: 'Temperature Ranges (Min, Max)'
-    //          },
- 
-    //          xAxis: {
-    //              type: 'datetime',
-    //              accessibility: {
-    //                  rangeDescription: ranges
-    //              }
-    //          },
- 
-    //          yAxis: {
-    //              title: {
-    //                  text: null
-    //              }
-    //          },
- 
-    //          tooltip: {
-    //              crosshairs: true,
-    //              shared: true,
-    //              valueSuffix: '°F',
-    //              xDateFormat: '%A, %b %e'
-    //          },
- 
-    //          legend: {
-    //              enabled: false
-    //          },
- 
-    //          series: [{
-    //              name: 'Temperatures',
-    //              data: arr
-    //          }]
- 
-    //      });
-    //   //  weather_hours(data)
- 
-    //  }
 
   
   getData()
@@ -557,43 +464,65 @@ export class SearchFormComponent implements OnInit {
     var processing:any = document.getElementById("progressbar");
     //console.log("haha")
     //console.log(processing)
+    console.log("getDate: ", this.strInfo, this.cityInfo);
+    
     processing.style.display = "block";
     //console.log(processing.style.display)
     var pbar:any = document.getElementById("probar");
     pbar.style.display = "block";
     pbar.style.height = "100px";
-    let api = 'https://maps.googleapis.com/maps/api/geocode/json?address=Los&key=AIzaSyCiknUSvpLnLnwp8JoWDaY8GWWIfUWhx60';
+    console.log("this is input city: ", this.inputCity);
+    var searchC:any = this.inputCity;
+    let checkbox:any = this.autoClick;
+    if(checkbox == true)
+    {
+      searchC = "Los";
+    }
+    let api = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.cityInfo + '&key=AIzaSyCiknUSvpLnLnwp8JoWDaY8GWWIfUWhx60';
+    console.log(api);
     this.http.get(api).subscribe((response:any) => {
       // console.log(response.status);
       //console.log(response.results[0]["geometry"]["location"]);
       var lat:any = response.results[0]["geometry"]["location"]["lat"];
       var lng:any = response.results[0]["geometry"]["location"]["lng"];
+      console.log(lat, lng);
       var field:any = "fields=precipitationIntensity,precipitationType,windSpeed,windGust,windDirection,temperatureMax,temperatureMin,temperatureApparent,cloudCover,cloudBase,cloudCeiling,weatherCode,temperature,humidity,pressureSurfaceLevel,visibility,cloudCover,uvIndex,precipitationProbability"
       let weatherApi:any = "http://localhost:3000/whetherInfo?" + "location_lat=" + lat + "&" + "location_lng=" + lng + "&" + field;
-
-      var dynmatic_title:any = document.getElementById("dynmatic_title")
-      var streetDOM:any = document.getElementById("street")
-      var cityDOM:any = document.getElementById("city")
-      var stateDOM:any = document.getElementById("state")
-      var forecast_title:any = document.createElement('h2')
-      var forecast_title_content:any = document.createTextNode("Forecast at " + streetDOM.value + ", " + cityDOM.value + ", " + stateDOM.value)
-      forecast_title.appendChild(forecast_title_content)
-      dynmatic_title.appendChild(forecast_title);
+      console.log(weatherApi);
 
       //console.log(weatherApi);
-      this.http.get(weatherApi).subscribe((responses:any) => {      
+      this.http.get(weatherApi).subscribe((responses:any) => {    
+        var dynmatic_title:any = document.getElementById("dynmatic_title")
+        var streetDOM:any = document.getElementById("street")
+        var cityDOM:any = document.getElementById("city")
+        var stateDOM:any = document.getElementById("state")
+        var forecast_title:any = document.createElement('h2')
+        var forecast_title_content:any;
+        // if (checkbox == true)
+        // {
+          // forecast_title_content = document.createTextNode("Forecast at " + "Los Angeles" + ", " + "Los Angeles County")
+        // }
+        // else{
+          forecast_title_content = document.createTextNode("Forecast at " + this.strInfo + ", " + this.cityInfo)
+        // }
+        forecast_title.appendChild(forecast_title_content)
+        dynmatic_title.appendChild(forecast_title);  
         //console.log(responses.data.timelines[0].intervals);
         var day_data:any = responses.data.timelines[0].intervals;
+        var more_data:any = responses.data.timelines[0];
         var t:any = document.getElementById("topTag");
         t.style.display = "block";
         var t2:any = document.getElementById("myTabContent");
         t2.style.display = "block";
 
         processing.style.display = "none";
+        console.log("data information: ", day_data);
         
         for (var i=0;i<14;i++){
           this.generate_details(day_data, i);
         }
+        
+        first_chart(more_data, lat,lng);
       })
     }
     )

@@ -203,6 +203,8 @@
   margin: auto;
   margin-top: 30px;
   width: 1000px;
+  position: relative;
+  left: 120px;
 }
 
 #myTable {
@@ -254,4 +256,29 @@
 #top-right-tag {
   float: right;
   margin-right: 100px;
+}
+/* 
+#weather-hours {
+  width: 1200px;
+  height: 500px;
+  background-color: #fff;
+  margin: auto auto;
+  color: #878787;
+  display: none;
+} */
+
+#contact
+{
+  margin: auto auto;
+}
+
+/* #topTag
+{
+  width:1000px;
+} */
+
+#oneDayDetail
+{
+  margin: auto;
+  width:1000px;
 }
