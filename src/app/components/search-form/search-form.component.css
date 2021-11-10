@@ -243,42 +243,48 @@
   display: none;
 }
 
+#warning {
+  text-align: center;
+  margin: auto;
+  width: 1000px;
+  display: none;
+}
+
 #dynmatic_title {
   text-align: center;
   margin: 100px auto;
 }
 
 #fav {
-  height: 50px;
-  width: 60px;
+  height: 30px;
+  width: 40px;
+}
+
+#allDetails {
+  text-align: center;
+  margin: auto;
 }
 
 #top-right-tag {
+  position: relative;
+  top: -38px;
   float: right;
   margin-right: 100px;
-}
-/* 
-#weather-hours {
-  width: 1200px;
-  height: 500px;
-  background-color: #fff;
-  margin: auto auto;
-  color: #878787;
   display: none;
-} */
+}
 
-#contact
-{
+#contact {
   margin: auto auto;
 }
 
-/* #topTag
-{
-  width:1000px;
-} */
-
-#oneDayDetail
-{
+#oneDayDetail {
   margin: auto;
-  width:1000px;
+  width: 1000px;
+}
+
+#dateTitles {
+  text-align: center;
+  margin: 30px auto;
+  font-size: 20px;
+  font-weight: bold;
 }

@@ -356,3 +356,225 @@ function first_chart(data, lat, lng)
         weather_hours(data, lat, lng);
     }
     
+    function img_showing03(code_number)
+    {
+      if(code_number == "1000")
+      {
+        return "Clear"
+      }
+      if(code_number == "1100")
+      {
+        return "Mostly Clear"
+      }
+      if(code_number == "1101")
+      {
+        return "Partly Cloudy"
+      }
+      if(code_number == "1102")
+      {
+        return "Mostly Cloudy"
+      }
+      if(code_number == "1001")
+      {
+        return "Cloudy"
+      }
+      if(code_number == "2000")
+      {
+        return "Fog"
+      }
+      if(code_number == "2100")
+      {
+        return "Light Fog"
+      }
+      if(code_number == "8000")
+      {
+        return "	Thunderstorm"
+      }
+      if(code_number == "5001")
+      {
+        return "Flurries"
+      }
+      if(code_number == "5100")
+      {
+        return "Light Snow"
+      }
+      if(code_number == "5000")
+      {
+        return "Snow"
+      }
+      if(code_number == "5101")
+      {
+        return "Heavy Snow"
+      }
+      if(code_number == "7102")
+      {
+        return "Light Ice Pellets"
+      }
+      if(code_number == "7000")
+      {
+        return "Ice Pellets"
+      }
+      if(code_number == "7101")
+      {
+        return "Heavy Ice Pellets"
+      }
+      if(code_number == "4000")
+      {
+        return "Drizzle"
+      }
+      if(code_number == "6000")
+      {
+        return "Freezing Drizzle"
+      }
+      if(code_number == "6200")
+      {
+        return "Light Freezing Rain"
+      }
+      if(code_number == "6001")
+      {
+        return "Freezing Rain"
+      }
+      if(code_number == "6201")
+      {
+        return "Heavy Freezing Rain"
+      }
+      if(code_number == "4200")
+      {
+        return "Light Rain"
+      }
+      if(code_number == "4001")
+      {
+        return "Rain"
+      }
+      if(code_number == "4201")
+      {
+        return "Heavy Rain"
+      }
+    }
+    
+    function oneDay(data, date_detail)
+    {
+      var tabs = document.getElementById("allDetails");
+      tabs.style.display = "none";
+      var one = document.getElementById("one");
+      //status
+      var status = document.createElement('tr');
+      status.style.backgroundColor = "rgb(242,242,242)"
+      var status_text = document.createElement('th');
+      var status_value = document.createElement('th');
+      status_text.innerHTML = "Status";
+      status_value.innerHTML = this.img_showing03(data.values.weatherCode);
+      status.appendChild(status_text);
+      status.appendChild(status_value);
+      one.appendChild(status);
+
+      //Max temp
+      var max_temp = document.createElement('tr');
+      max_temp.style.backgroundColor = "rgb(255,255,255)"
+      var max_temp_text = document.createElement('th');
+      var max_temp_value = document.createElement('th');
+      max_temp_text.innerHTML = "Max Temperature";
+      max_temp_value.innerHTML = data.values.temperatureMax + "&deg";
+      max_temp.appendChild(max_temp_text);
+      max_temp.appendChild(max_temp_value);
+      one.appendChild(max_temp);
+
+      //Min temp
+      var min_temp = document.createElement('tr');
+      min_temp.style.backgroundColor = "rgb(242,242,242)"
+      var min_temp_text = document.createElement('th');
+      var min_temp_value = document.createElement('th');
+      min_temp_text.innerHTML = "Min Temperature";
+      min_temp_value.innerHTML = data.values.temperatureMin + "&deg";
+      min_temp.appendChild(min_temp_text);
+      min_temp.appendChild(min_temp_value);
+      one.appendChild(min_temp);
+
+      //apparent temperature
+      var appar = document.createElement('tr');
+      appar.style.backgroundColor = "rgb(255,255,255)"
+      var appar_text = document.createElement('th');
+      var appar_value = document.createElement('th');
+      appar_text.innerHTML = "Apparent Temperature";
+      appar_value.innerHTML = data.values.temperatureApparent + "&deg";
+      appar.appendChild(appar_text);
+      appar.appendChild(appar_value);
+      one.appendChild(appar);
+
+      //sun rise time
+      var rise = document.createElement('tr');
+      rise.style.backgroundColor = "rgb(242,242,242)"
+      var rise_text = document.createElement('th');
+      var rise_value = document.createElement('th');
+      rise_text.innerHTML = "Sun Rise Time";
+      var sunrise = data.values.sunriseTime;
+      var arr1 = sunrise.split("-");
+      var st1= arr1[0] + '-' + arr1[1] + '-' + arr1[2];
+      var tim01 = new Date(st1).getHours()
+      rise_value.innerHTML = tim01;
+      rise.appendChild(rise_text);
+      rise.appendChild(rise_value);
+      one.appendChild(rise);
+
+      //sun set time
+      var sunS = document.createElement('tr');
+      sunS.style.backgroundColor = "rgb(255,255,255)"
+      var sunS_text = document.createElement('th');
+      var sunS_value = document.createElement('th');
+      sunS_text.innerHTML = "Sun Set Time";
+      var sunset = data.values.sunsetTime;
+      var arr2 = sunset.split("-");
+      var st2= arr2[0] + '-' + arr2[1] + '-' + arr2[2];
+      var tim02 = new Date(st2).getHours()
+      sunS_value.innerHTML = tim02;
+      sunS.appendChild( sunS_text);
+      sunS.appendChild(sunS_value);
+      one.appendChild(sunS);
+
+      //humidity
+      var hu = document.createElement('tr');
+      hu.style.backgroundColor = "rgb(242,242,242)"
+      var hu_text = document.createElement('th');
+      var hu_value = document.createElement('th');
+      hu_text.innerHTML = "Humidity";
+      hu_value.innerHTML = data.values.humidity + "%";
+      hu.appendChild(hu_text);
+      hu.appendChild(hu_value);
+      one.appendChild(hu);
+
+      //wind speed
+      var wind = document.createElement('tr');
+      wind.style.backgroundColor = "rgb(255,255,255)"
+      var wind_text = document.createElement('th');
+      var wind_value = document.createElement('th');
+      wind_text.innerHTML = "Wind Speed";
+      wind_value.innerHTML = data.values.windSpeed + "mph";
+      wind.appendChild(wind_text);
+      wind.appendChild(wind_value);
+      one.appendChild(wind);
+
+      //vis
+      var visi = document.createElement('tr');
+      visi.style.backgroundColor = "rgb(242,242,242)"
+      var visi_text = document.createElement('th');
+      var visi_value = document.createElement('th');
+      visi_text.innerHTML = "Visibility";
+      visi_value.innerHTML = data.values.visibility + "mi";
+      visi.appendChild(visi_text);
+      visi.appendChild(visi_value);
+      one.appendChild(visi);
+
+      //cloud cover
+      var ccover = document.createElement('tr');
+      ccover.style.backgroundColor = "rgb(255,255,255)"
+      var ccover_text = document.createElement('th');
+      var ccover_value = document.createElement('th');
+      ccover_text.innerHTML = "Cloud Cover";
+      ccover_value.innerHTML = data.values.cloudCover + "%";
+      ccover.appendChild(ccover_text);
+      ccover.appendChild(ccover_value);
+      one.appendChild(ccover);
+
+      var titles= document.getElementById("dateTitles");
+      titles.innerHTML = date_detail;
+    }

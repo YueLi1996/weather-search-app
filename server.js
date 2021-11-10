@@ -44,14 +44,14 @@ app.get('/whetherInfo',function(req, res){
     res.setHeader("Content-Type","text/plain");
     res.setHeader("Access-Control-Allow-Origin","*");
     var params = url.parse(req.url, true).query;
-    
+    // console.log("hello");
     var options = {
         method: 'GET',
         url: 'https://api.tomorrow.io/v4/timelines?location='+ params.location_lat + ',' +
-        params.location_lng + '&fields=' + params.fields + '&timesteps=1d&units=imperial&timezone=America/Los_Angeles&apikey=Kinp9u7WdiYqjIegSaaPuHkUA0t3W1Te',
+        params.location_lng + '&fields=' + params.fields + '&timesteps=1d&units=imperial&timezone=America/Los_Angeles&apikey=C5JMDFsiGmycb43l7QsGc2nV15uiENPi',
     };
     request(options, function (error, response, body) {
-        // console.log(options.url);
+        console.log(options.url);
         // console.log(body);
         res.send(body);
     });
@@ -66,10 +66,10 @@ app.get('/whetherInfo/hours',function(req, res){
     var options = {
         method: 'GET',
         url: 'https://api.tomorrow.io/v4/timelines?location='+ params.location_lat + ',' +
-        params.location_lng + '&fields=' + params.fields + '&timesteps=1h&units=imperial&timezone=America/Los_Angeles&apikey=Kinp9u7WdiYqjIegSaaPuHkUA0t3W1Te',
+        params.location_lng + '&fields=' + params.fields + '&timesteps=1h&units=imperial&timezone=America/Los_Angeles&apikey=C5JMDFsiGmycb43l7QsGc2nV15uiENPi',
     };
     request(options, function (error, response, body) {
-        // console.log(options.url);
+        console.log(options.url);
         // console.log(body);
         res.send(body);
     });

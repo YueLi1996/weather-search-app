@@ -2,12 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as Highcharts from 'highcharts';
 declare function first_chart(more_data:any, lat:any, lng:any):null
+declare function oneDay(data:any, date_detail:any):null
 
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.css']
 })
+
 export class SearchFormComponent implements OnInit {
 
   // @ViewChild('street_and_city') street_and_city:any
@@ -19,6 +21,7 @@ export class SearchFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   inputStreet:any = ""
   inputCity:any = ""
   citydisable:any = "false"
@@ -46,11 +49,11 @@ export class SearchFormComponent implements OnInit {
     let streetDOM = this.inputStreet;
     let cityDOM = this.inputCity;
     let stateDOM = this.select_city.inputState;
-    console.log(checkbox, "values checkbox");
+    //console.log(checkbox, "values checkbox");
     
     if(checkbox == true)
     {
-      console.log(this.select_city.statedisable, "checkbox is true liangdu");
+      //console.log(this.select_city.statedisable, "checkbox is true liangdu");
       
       if(streetDOM != "" || cityDOM != "") {
         this.inputStreet = ""
@@ -62,12 +65,12 @@ export class SearchFormComponent implements OnInit {
         this.select_city.inputState = "Select your state"
 
         this.http.get("https://ipinfo.io/?token=20ef1690f3db86").subscribe((response:any) => {
-          console.log(response);
+          //console.log(response);
           this.strInfo = response.region;
           this.cityInfo = response.city;
         })
 
-        console.log("inner checkBox: ", this.cityInfo);
+        //console.log("inner checkBox: ", this.cityInfo);
         
         // stateDOM.disabled = "true"
         // this.inputStreet = "Los Angeles"
@@ -79,7 +82,7 @@ export class SearchFormComponent implements OnInit {
       this.citydisable = "false"
       this.streetdisable = "false"
       this.select_city.statedisable = "false"
-      console.log("this is input street in onclick: ", this.inputStreet);
+     // console.log("this is input street in onclick: ", this.inputStreet);
       
       this.strInfo = this.inputStreet
       this.cityInfo = this.inputCity
@@ -104,7 +107,7 @@ export class SearchFormComponent implements OnInit {
     let searchbtnDOM = this.searchbtnDOM
     let checkbox = this.autoClick;
     //handle submit button
-    console.log("checkBox status: ", checkbox);
+    //console.log("checkBox status: ", checkbox);
     
     if (checkbox == true)
     {
@@ -124,7 +127,7 @@ export class SearchFormComponent implements OnInit {
   
   onClickFucntion()
   {
-    console.log("this is false");
+    //console.log("this is false");
     if (this.autoClick == false)
     {
       this.autoClick = true;
@@ -133,6 +136,15 @@ export class SearchFormComponent implements OnInit {
     {
       this.autoClick = false;
     }
+  }
+
+  doClear() {
+    var streetDOM:any = document.getElementById("street")
+    var cityDOM:any = document.getElementById("city")
+    var stateDOM:any = document.getElementById("state")
+    streetDOM.value = ""
+    cityDOM.value = ""
+    stateDOM.value = "Select your state"
   }
 
   images = [
@@ -345,15 +357,16 @@ export class SearchFormComponent implements OnInit {
 
   // public clickInfo(data:any)
   // {
-  //   alert("hello")
-  //   // var tabs:any = document.getElementById("allDetails")
-  //   // tabs.style.display = "none";
-  //   // var one:any = document.getElementById("one");
-  //   // var status:any = document.createElement('tr');
-  //   // var status_text:any = document.createElement('th');
-  //   // var status_value:any = document.createElement('th');
-  //   // status_text.innerHTML = "Status";
-  //   // status_value.innerHTML = this.img_showing03(data.code);
+  //   var tabs:any = document.getElementById("allDetails")
+  //   tabs.style.display = "none";
+  //   var one:any = document.getElementById("one");
+  //   var status:any = document.createElement('tr');
+  //   var status_text:any = document.createElement('th');
+  //   var status_value:any = document.createElement('th');
+  //   status_text.innerHTML = "Status";
+  //   status_value.innerHTML = this.img_showing03(data.values.weatherCode);
+  //   tabs.appendChild(status_text);
+  //   tabs.appendChild(status_value);
   // }
 
   public generate_details(data:any, index:any)
@@ -392,7 +405,11 @@ export class SearchFormComponent implements OnInit {
 
       var tableContent:any = document.getElementById("myTableBody");
       var overall:any = document.createElement('tr');
-      // overall.onclick = this.clickInfo(data[index]);
+      overall.onclick = function()
+      {
+        oneDay(data[index], date_detail)
+
+      }
       overall.style.cursor = "pointer";
       var nums:any = document.createElement('th');
       nums.setAttribute("scope", "row");
@@ -454,24 +471,26 @@ export class SearchFormComponent implements OnInit {
                 }
                this.preCTime = nowTime;
                return false;
-     }
+    }
 
  
 
   
   getData()
   {
+    var top_right_tag:any = document.getElementById("top-right-tag");
+    top_right_tag.style.display = "block";
     var processing:any = document.getElementById("progressbar");
     //console.log("haha")
     //console.log(processing)
-    console.log("getDate: ", this.strInfo, this.cityInfo);
+    //console.log("getDate: ", this.strInfo, this.cityInfo);
     
     processing.style.display = "block";
     //console.log(processing.style.display)
     var pbar:any = document.getElementById("probar");
     pbar.style.display = "block";
     pbar.style.height = "100px";
-    console.log("this is input city: ", this.inputCity);
+    //console.log("this is input city: ", this.inputCity);
     var searchC:any = this.inputCity;
     let checkbox:any = this.autoClick;
     if(checkbox == true)
@@ -485,29 +504,28 @@ export class SearchFormComponent implements OnInit {
       //console.log(response.results[0]["geometry"]["location"]);
       var lat:any = response.results[0]["geometry"]["location"]["lat"];
       var lng:any = response.results[0]["geometry"]["location"]["lng"];
-      console.log(lat, lng);
-      var field:any = "fields=precipitationIntensity,precipitationType,windSpeed,windGust,windDirection,temperatureMax,temperatureMin,temperatureApparent,cloudCover,cloudBase,cloudCeiling,weatherCode,temperature,humidity,pressureSurfaceLevel,visibility,cloudCover,uvIndex,precipitationProbability"
+      //console.log(lat, lng);
+      var field:any = "fields=precipitationIntensity,precipitationType,windSpeed,windGust,windDirection,temperatureMax,temperatureMin,temperatureApparent,cloudCover,cloudBase,cloudCeiling,weatherCode,temperature,humidity,pressureSurfaceLevel,visibility,cloudCover,uvIndex,precipitationProbability,sunriseTime,sunsetTime"
       let weatherApi:any = "http://localhost:3000/whetherInfo?" + "location_lat=" + lat + "&" + "location_lng=" + lng + "&" + field;
       console.log(weatherApi);
-
+      
       //console.log(weatherApi);
       this.http.get(weatherApi).subscribe((responses:any) => {    
+        var respCode:any = responses.code
+        console.log(respCode) // undefin
+        var warnDOM:any = document.getElementById("warning")
+        if (respCode >= 400000) {
+          warnDOM.style.display = "block"
+          processing.style.display = "none";
+          top_right_tag.style.display = "none";
+          return
+        }
+        warnDOM.style.display = "none"
         var dynmatic_title:any = document.getElementById("dynmatic_title")
-        var streetDOM:any = document.getElementById("street")
-        var cityDOM:any = document.getElementById("city")
-        var stateDOM:any = document.getElementById("state")
-        var forecast_title:any = document.createElement('h2')
-        var forecast_title_content:any;
-        // if (checkbox == true)
-        // {
-          // forecast_title_content = document.createTextNode("Forecast at " + "Los Angeles" + ", " + "Los Angeles County")
-        // }
-        // else{
-          forecast_title_content = document.createTextNode("Forecast at " + this.strInfo + ", " + this.cityInfo)
-        // }
-        forecast_title.appendChild(forecast_title_content)
-        dynmatic_title.appendChild(forecast_title);  
-        //console.log(responses.data.timelines[0].intervals);
+        var forecast_title_content:any = "Forecast at " + this.strInfo + ", " + this.cityInfo
+        dynmatic_title.innerHTML = forecast_title_content
+        
+        //console.log(responses, "code????");
         var day_data:any = responses.data.timelines[0].intervals;
         var more_data:any = responses.data.timelines[0];
         var t:any = document.getElementById("topTag");
@@ -518,13 +536,15 @@ export class SearchFormComponent implements OnInit {
         processing.style.display = "none";
         console.log("data information: ", day_data);
         
-        for (var i=0;i<14;i++){
+        for (var i=0;i<14;i++) {
           this.generate_details(day_data, i);
         }
         
         first_chart(more_data, lat,lng);
+      },
+      (error:any) => {
+        console.log('oops', error)
       })
-    }
-    )
+    })
   }
 }

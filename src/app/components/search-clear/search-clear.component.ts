@@ -16,4 +16,5 @@ export class SearchClearComponent implements OnInit {
   }
   
   searchbtnDOM:any = true;
+  
 }

@@ -44,7 +44,7 @@
       </div>
     
       <div>
-        <button type="button" class="btn btn-outline-secondary" id="clearbtn">
+        <button type="button" class="btn btn-outline-secondary" id="clearbtn" (click)="doClear()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-nested"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -69,55 +69,63 @@
   </div>
 </div>
 
-<div id="dynmatic_title"></div>
+<h2 id="dynmatic_title"></h2>
 
-<div id="top-right-tag">
-  <img id="fav" [src]="img.url" alt="" (click)="changeImg()">&nbsp; &nbsp; &nbsp;<span style="color: gray;">Details &#62;</span>
+<div class="alert alert-danger" role="alert" id="warning">
+  An error occured please try again later
 </div>
 
 <div id="allDetails">
-<div id="topTag" style="display: none;">
-  <ul class="nav nav-tabs justify-content-end" id="weatherTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Day View</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Daily Temp. Chart</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Meteogram</a>
-    </li>
-  </ul>
-</div>
+  <div id="top-right-tag">
+    <img id="fav" [src]="img.url" alt="" (click)="changeImg()">&nbsp; &nbsp; &nbsp;<span style="color: gray;">Details
+      &#62;</span>
+  </div>
 
-<div class="tab-content" id="myTabContent" style="display: none;">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" >
-    <table class="table table-hover" id="myTable">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Date</th>
-          <th scope="col">Status</th>
-          <th scope="col">Temp.High(&deg)</th>
-          <th scope="col">Temp.Low(&deg)</th>
-          <th scope="col">Wind Speed(mph)</th>
-        </tr>
-      </thead>
-      <tbody id="myTableBody"></tbody>
-    </table>
+  <div id="topTag" style="display: none;">
+    <ul class="nav nav-tabs justify-content-end" id="weatherTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Day View</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Daily Temp. Chart</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Meteogram</a>
+      </li>
+    </ul>
   </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="text-align: center; width: 1000px;  margin: auto auto;">
-    <figure class="highcharts-figure" >
-      <div id="container"></div>
-    </figure>
+
+  <div class="tab-content" id="myTabContent" style="display: none;">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" >
+      <table class="table table-hover" id="myTable">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Temp.High(&deg)</th>
+            <th scope="col">Temp.Low(&deg)</th>
+            <th scope="col">Wind Speed(mph)</th>
+          </tr>
+        </thead>
+        <tbody id="myTableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="text-align: center; width: 1000px;  margin: auto auto;">
+      <figure class="highcharts-figure" >
+        <div id="container"></div>
+      </figure>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="text-align: center; width: 1000px">
+      <div id="weather-hours"></div>
+    </div>
   </div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="text-align: center; width: 1000px">
-    <div id="weather-hours"></div>
-  </div>
-</div>
 </div>
 
 <div id="oneDayDetail">
+  <div id="dateTitles"></div>
+  <!-- <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div> -->
 <table class="table">
   <tbody id="one">
     <!-- <tr>
